@@ -6,7 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ImageController;
 
 Route::get('/', [AuthController::class, 'showSignupForm'])->name('products.signup');
-Route::post('/', [AuthController::class, 'signup'])->name('signup');
+Route::post('/signup', [AuthController::class, 'signup'])->name('signup');
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('products.login');
 Route::post('/login', [AuthController::class, 'login'])->name('login');

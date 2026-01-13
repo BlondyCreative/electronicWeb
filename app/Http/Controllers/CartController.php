@@ -7,7 +7,6 @@ use App\Models\Cart;
 use App\Models\CartItem;
 use App\Models\Product;
 
-
 class CartController extends Controller
 {
 
@@ -19,14 +18,14 @@ class CartController extends Controller
     public function add($id)
     {
 if (!Auth::check()) {
-    return redirect()->route('products.login')->withErrors([ 'auth' => 'Debes iniciar sesión para agregar al carrito.' ]); 
+    return redirect()->route('products.login')->withErrors([ 'auth' => 'Debes iniciar sesión para agregar al carrito.' ]);
     }
 
     $product = Product::findOrFail($id);
 
     $cart = Cart::firstOrCreate([ 'user_id' => Auth::id() ]);
 
-    $cartItem = $cart->items()->where('product_id', $id)->first(); 
+    $cartItem = $cart->items()->where('product_id', $id)->first();
     if ($cartItem) { $cartItem->qty += 1; $cartItem->save(); }
     else {
     $cart->items()->create([ 'product_id' => $id, 'qty' => 1 ]);
@@ -65,7 +64,7 @@ if (!Auth::check()) {
             $cart->items()->where('product_id', $productId)->delete();
         }
 
-        return view('products.addtocard', compact('items'));
+        return view('products.addtocard', compact('cart'));
     }
 
 }

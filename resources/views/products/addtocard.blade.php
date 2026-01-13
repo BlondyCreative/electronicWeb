@@ -30,6 +30,8 @@
         <input type="number" name="qty" value="{{ $item->qty }}" min="1" class="qty-input">
         <button type="button" class="qty-btn">+</button>
     </div>
+
+    
 </form>
             </div>
         </div>

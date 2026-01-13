@@ -99,6 +99,8 @@ form {
     margin-top: 19px;
 }
 
+.show-password { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; }
+
 .form-group {
   position: relative;
 }

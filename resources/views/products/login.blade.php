@@ -12,6 +12,7 @@
        </div>
         <div class="form-group">
       <input type="password" name="password" placeholder="Password"  class="input-field password-input" required>
+        <button type="button" class="show-password">Show</button>
        </div>
            <button type="submit"  class="sign-in-btn">log in</button>
 <div class="divider">or</div>

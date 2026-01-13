@@ -8,19 +8,22 @@
 <form method="POST" action="{{ route('signup') }}">
 
       @csrf
+      <div class="form-group">
+    <input type="text" name="name" placeholder="Name" class="input-field" required>
+</div>
+
             <div class="form-groupp">
       <input type="email" name="email" placeholder="Email"   class="input-field" required>
        </div>
         <div class="form-group">
       <input type="password" name="password" placeholder="Password"  class="input-field password-input" required>
+        <button type="button" class="show-password">Show</button>
        </div>
          <button type="submit" class="sign-in-btn">Sign Up</button>
+
 <div class="divider">or</div>
          <a href="{{ route('products.login') }}" class="sign-in-btn">Log in</a>
-
-
-    </form>
-     </form>
+ </form>
   </div>
 </div>
 @endsection

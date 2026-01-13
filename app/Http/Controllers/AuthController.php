@@ -20,19 +20,17 @@ class AuthController extends Controller
         return view('products.signup');
     }
 
-
     public function signup(Request $request)
     {
 
-  $validated = $request->validate([ 'email' => ['required', 'email'],
-  'password' => ['required'], ]);
+$validated = $request->validate([ 'name' => ['required', 'string', 'max:255'],
+'email' => ['required', 'email'], 'password' => ['required'] ]);
 
-$user = User::create([ 'email' => $validated['email'],
-  'password' => Hash::make($validated['password']),
-]);
+$user = User::create([ 'name' => $validated['name'], 'email' => $validated['email'], 'password' => Hash::make($validated['password']), ]);
 
-  Auth::login($user);
-  $request->session()->regenerate();
+
+Auth::login($user);
+$request->session()->regenerate();
 
 return redirect()->route('products.login');
     }

@@ -11,15 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
+
         Schema::create('images', function (Blueprint $table) {
-$table->id(); $table->string('title'); 
-$table->string('tags')->nullable(); 
-$table->text('description')->nullable(); 
-$table->string('category')->nullable();
- $table->string('path')->nullable(); 
+    $table->id();
+    $table->string('filename');
+    $table->string('title');
+    $table->string('tags')->nullable();
+    $table->text('description')->nullable();
+    $table->string('category')->nullable();
+     $table->string('path')->nullable();
  $table->decimal('price', 8, 2)->nullable();
 $table->timestamps();
-        });
+});
+
     }
 
     /**
