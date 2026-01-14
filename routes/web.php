@@ -11,6 +11,8 @@ Route::post('/signup', [AuthController::class, 'signup'])->name('signup');
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('products.login');
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 
+
+Route::middleware(['auth'])->group(function () {
 Route::get('/products/addtocard', [CartController::class, 'show'])->name('addtocard');
 
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
@@ -26,8 +28,4 @@ Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('car
 Route::get('/images/search', [ImageController::class, 'search'])->name('images.search');
 Route::get('/images/{id}', [ImageController::class, 'show'])->name('images.show');
 
-
-
-
-
-?>
+});

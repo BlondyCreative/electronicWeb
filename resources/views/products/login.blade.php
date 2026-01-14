@@ -8,6 +8,10 @@
 <form method="POST" action="{{ route('login') }}">
          <div class="form-groupp">
       @csrf
+            <div class="form-group">
+    <input type="text" name="name" placeholder="Name" class="input-field" required>
+</div>
+ <div class="form-group">
       <input type="email" name="email" placeholder="Email"   class="input-field" required>
        </div>
         <div class="form-group">
@@ -20,5 +24,6 @@
     </form>
      </form>
   </div>
+    </div>
 </div>
 @endsection

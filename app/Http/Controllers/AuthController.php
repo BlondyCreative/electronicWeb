@@ -26,19 +26,25 @@ class AuthController extends Controller
 $validated = $request->validate([ 'name' => ['required', 'string', 'max:255'],
 'email' => ['required', 'email'], 'password' => ['required'] ]);
 
-$user = User::create([ 'name' => $validated['name'], 'email' => $validated['email'], 'password' => Hash::make($validated['password']), ]);
+
+$user = User::create([ 'name' => $validated['name'],
+'email' => $validated['email'],
+'password' => Hash::make($validated['password']),
+]);
 
 
 Auth::login($user);
 $request->session()->regenerate();
 
 return redirect()->route('products.login');
+
     }
 
     public function login(Request $request)
     {
         // ✅ Validación
         $credentials = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);

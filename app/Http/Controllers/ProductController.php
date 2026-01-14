@@ -9,8 +9,9 @@ class ProductController extends Controller
     // Mostrar lista de productos
     public function index()
     {
+
         $products = Product::all();
-        return view('products.index', compact('products'));
+return view('products.index', compact('products'));
     }
 
     // Mostrar formulario de creación
@@ -22,6 +23,8 @@ class ProductController extends Controller
    public function show($id)
    {
        $product = Product::findOrFail($id);
+
+       $products = Product::all();
        return view('products.eachproduct', compact('product'));
    }
 
