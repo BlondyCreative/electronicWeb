@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
-use App\Models\Image;
+use App\Models\Search;
 use App\Models\Product;
 
-class ImageController extends Controller
+class SearchController extends Controller
 {
 
 public function search (Request $request)
 {
-$query = strtolower(trim($request->input('q'))); 
-$similarImages = Product::where(function ($q) use ($query) { 
-    $q->where('name', 'LIKE', "%{$query}%") 
-    
-    ->orWhere('tags', 'LIKE', "%{$query}%") 
-    ->orWhere('description', 'LIKE', "%{$query}%") 
-    ->orWhere('category', 'LIKE', "%{$query}%"); 
+$query = strtolower(trim($request->input('q')));
+$similarImages = Product::where(function ($q) use ($query) {
+    $q->where('name', 'LIKE', "%{$query}%")
+
+    ->orWhere('tags', 'LIKE', "%{$query}%")
+    ->orWhere('description', 'LIKE', "%{$query}%")
+    ->orWhere('category', 'LIKE', "%{$query}%");
     })->get();
 
 
@@ -27,7 +27,7 @@ public function find (Request $request)
 {
     $query = $request->input('q');
 
-    $image = Image::where('title', 'like', "%{$query}%")
+    $image = Search::where('title', 'like', "%{$query}%")
         ->orWhere('tags', 'like', "%{$query}%")
         ->first();
 
@@ -40,18 +40,18 @@ public function find (Request $request)
 
 public function show($id) {
 
-$image = Image::findOrFail($id);
+$image = Search::findOrFail($id);
 
-$similarImages = Image::where('id', '!=', $image->id)
-->where(function ($q) use ($image) { 
-    if ($image->title) { 
+$similarImages = Search::where('id', '!=', $image->id)
+->where(function ($q) use ($image) {
+    if ($image->title) {
     $q->orWhere('title', $image->title);
-  
-     } 
-    if ($image->tags) { 
-    $tags = explode(',', $image->tags); 
 
-    foreach ($tags as $tag) { 
+     }
+    if ($image->tags) {
+    $tags = explode(',', $image->tags);
+
+    foreach ($tags as $tag) {
     $tag = trim($tag);
     $q->orWhere('tags', 'like', "%{$tag}%"); } }
     })

@@ -3,7 +3,7 @@ use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\ImageController;
+use App\Http\Controllers\SearchController;
 
 Route::get('/', [AuthController::class, 'showSignupForm'])->name('products.signup');
 Route::post('/signup', [AuthController::class, 'signup'])->name('signup');
@@ -25,7 +25,7 @@ Route::post('/cart/add/{id}', [CartController::class, 'add'])->name('cart.add');
 Route::post('/cart/update/{id}', [CartController::class, 'update'])->name('cart.update');
 Route::delete('/cart/remove/{id}', [CartController::class, 'remove'])->name('cart.remove');
 
-Route::get('/images/search', [ImageController::class, 'search'])->name('images.search');
-Route::get('/images/{id}', [ImageController::class, 'show'])->name('images.show');
+Route::get('/search/search', [SearchController::class, 'search'])->name('search.search');
+Route::get('/search/{id}', [SearchController::class, 'show'])->name('search.show');
 
 });

@@ -4,7 +4,7 @@
    <header class="header">
         <div class="header-container">
             <div class="logo">Shofio</div>
-              <form action="{{ route('images.search') }}" method="GET">
+              <form action="{{ route('search.search') }}" method="GET">
             <div class="search-bar">
                 <input type="text" name='q' placeholder="Search on Shofio" class="search-input">
                 <button class="search-btn">Search</button>
@@ -89,7 +89,7 @@
                             <button class="btn-secondary">Add to Chart</button>
                         </form>
 
-                        <a href="{{ route('products.signin') }}" class="btn btn-primary">Buy Now</a>
+                        <button class="btn btn-primary">Buy Now</button>
 
                     </div>
                 </div>
